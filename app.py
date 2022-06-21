@@ -28,15 +28,21 @@ def product_info(input):
         rm_extra_spaces = " ".join(items.split())
         convert_to_list = rm_extra_spaces.split(" ")
         if len(convert_to_list) < 6:
-            pass # Need to create a function that adds in fields, if they are blank
-        
-        details = {
-            "Lot #": convert_to_list[0],
-            "Case Orders": convert_to_list[1],
-            "Case Picked": convert_to_list[2],
-            "Product Code": convert_to_list[4],
-            "Code Date": convert_to_list[5]
-        }
+            details = {
+                "Lot #": convert_to_list[0],
+                "Case Orders": 0,
+                "Case Picked": convert_to_list[1],
+                "Product Code": convert_to_list[3],
+                "Code Date": convert_to_list[4]
+                } 
+        else:
+            details = {
+                "Lot #": convert_to_list[0],
+                "Case Orders": convert_to_list[1],
+                "Case Picked": convert_to_list[2],
+                "Product Code": convert_to_list[4],
+                "Code Date": convert_to_list[5]
+            }
 
         product_list.append(details)
 
@@ -115,7 +121,7 @@ def get_net_weight(input):
 
 def get_page_info(page):
 
-    with open ("bol.pdf", "rb") as f:
+    with open ("bol2.pdf", "rb") as f:
         pdf = pdf2.PdfFileReader(f)
 
         first_pg = pdf.getPage(page)
@@ -149,7 +155,7 @@ def get_page_info(page):
 
 def main():
     
-    with open ("bol.pdf", "rb") as f:
+    with open ("bol2.pdf", "rb") as f:
         pdf = pdf2.PdfFileReader(f)
         page_count = pdf.numPages
         #first_pg = pdf.getPage(page)
@@ -165,4 +171,6 @@ def main():
 #get_page_info()
 main()
 #print(page)
+
+
 
